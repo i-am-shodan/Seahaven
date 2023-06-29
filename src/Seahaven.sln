@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seahaven", "Seahaven.csproj", "{CF623DB9-1996-4E5F-91DE-3C46F15D7D5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF623DB9-1996-4E5F-91DE-3C46F15D7D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF623DB9-1996-4E5F-91DE-3C46F15D7D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF623DB9-1996-4E5F-91DE-3C46F15D7D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF623DB9-1996-4E5F-91DE-3C46F15D7D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FEDB102-AD8E-4087-962E-62E36F0B0084}
+	EndGlobalSection
+EndGlobal
