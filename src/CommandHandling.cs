@@ -22,7 +22,7 @@ namespace Seahaven
                 }
 
                 CommandLineRaw = line.Split(" ");
-                await rootCommand.InvokeAsync(line.Split(" "));
+                await rootCommand.InvokeAsync(line);
             }
         }
 

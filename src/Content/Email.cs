@@ -89,7 +89,10 @@ Sign off the email with the senders first name only.
 Emails should be at most two paragraphs long. Internals email should be informal, external ones formal.
 Don't mention a persons job title unless it's relevant to the email.
 For internal emails add a reasonable frequency of human errors, this could be spelling or grammatical errors, typos or incorrect/missing apostrophies.
-Internal emails could also include nicknames or briefly mention events outside of work.";
+Internal emails could also include nicknames or briefly mention events outside of work.
+Never mention you've introduced spelling errors or typos in the output.
+Never mention you're a machine.
+";
 
             foreach (var promptObject in objectsToDiscuss)
             {
