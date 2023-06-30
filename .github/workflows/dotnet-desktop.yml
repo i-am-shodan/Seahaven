@@ -30,7 +30,7 @@ jobs:
     - name: Build monolithic linux version
       run: dotnet publish --self-contained true -p:Platform="Any CPU" -r linux-x64 -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:Configuration=Release -p:IncludeAllContentForSelfExtract=true -p:PublishReadyToRunShowWarnings=true src/Seahaven.csproj        
     - name: Zip artifact for linux
-      run: zip --junk-paths seahaven-no-dotnet-runtime-windows.zip "./src/bin/Any CPU/Release/net6.0/linux-x64/publish/" -r   
+      run: zip --junk-paths seahaven-no-dotnet-runtime-linux.zip "./src/bin/Any CPU/Release/net6.0/linux-x64/publish/" -r   
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
