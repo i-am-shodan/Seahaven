@@ -22,7 +22,7 @@ To generate test data using Seahaven, follow these steps:
 
 ### Seahaven commands
 
-The following commands can either be used at the command like directly or perhaps more usefully combined into a script. Here is an example script, you can run it with the `script file=<THEFILE>` command.
+The following commands can either be used at the command like directly or perhaps more usefully combined into a script. Here is an example script, you can run it with the `script file=<THEFILE>` command or type each command in directly.
 
 ```
 # Your Azure/OpenAI model. You need to get this from the OpenAI dev page or the Azure portal

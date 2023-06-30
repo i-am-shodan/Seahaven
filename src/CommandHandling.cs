@@ -16,7 +16,7 @@ namespace Seahaven
                 Console.Write("> ");
                 var line = Console.ReadLine();
 
-                if (string.IsNullOrWhiteSpace(line))
+                if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
                 {
                     continue;
                 }
