@@ -28,7 +28,7 @@ jobs:
     - name: Build monolithic windows version
       run: dotnet publish --self-contained true -p:Platform="Any CPU" -r win-x64 -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:Configuration=Release -p:IncludeAllContentForSelfExtract=true -p:PublishReadyToRunShowWarnings=true src/Seahaven.csproj
     - name: Zip artifact for windows
-      run: zip --junk-paths seahaven-no-dotnet-runtime-windows.zip "./Seahaven/src/bin/Any CPU/Release/net6.0/win-x64/publish/*" -r    
+      run: zip --junk-paths seahaven-no-dotnet-runtime-windows.zip "./Seahaven/Seahaven/src/bin/Any CPU/Release/net6.0/win-x64/publish/*" -r    
     - name: Build monolithic linux version
       run: dotnet publish --self-contained true -p:Platform="Any CPU" -r linux-x64 -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:Configuration=Release -p:IncludeAllContentForSelfExtract=true -p:PublishReadyToRunShowWarnings=true src/Seahaven.csproj        
     - name: Zip artifact for linux
