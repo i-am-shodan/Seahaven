@@ -30,7 +30,7 @@ jobs:
     - name: Where my files
       run: ls -l ./
     - name: Where my files
-      run: ls -l ./src/bin/
+      run: ls -l "./src/bin/Any CPU/Release/net6.0/win-x64/publish/"
     - name: Zip artifact for windows
       run: zip --junk-paths seahaven-no-dotnet-runtime-windows.zip "./Seahaven/Seahaven/src/bin/Any CPU/Release/net6.0/win-x64/publish/*" -r    
     - name: Build monolithic linux version
