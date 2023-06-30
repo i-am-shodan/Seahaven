@@ -114,7 +114,7 @@ DomainName should be a possible domain name the business could be using";
             };
             commands["show"].AddCommand(showCompanyCommand);
 
-            showCompanyCommand.SetHandler(async (nameOpt, idOpt) =>
+            showCompanyCommand.SetHandler((nameOpt, idOpt) =>
             {
                 List<Company> results = new();
 

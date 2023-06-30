@@ -45,7 +45,9 @@ The company name should not be included in either the product or the description
             return p; ;
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public static async Task<Product> Create(Company company)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             var faker = new Faker<Product>()           
                 .RuleFor(property: u => u.Name, setter: (f, u) => f.Commerce.ProductName())
@@ -99,7 +101,7 @@ The company name should not be included in either the product or the description
             };
             commands["show"].AddCommand(showProductCommand);
 
-            showProductCommand.SetHandler(async (idOpt) =>
+            showProductCommand.SetHandler((idOpt) =>
             {
                 var p = idOpt.Get<Product>();
 

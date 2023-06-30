@@ -23,7 +23,7 @@ namespace Seahaven.Content
 
         public string Prompt => $"An email from {From.FirstName} {From.LastName} To {To.FirstName} {To.LastName}. the subject line is {Subject}";
 
-        public string? Attachment { get; private set; }
+        public string Attachment { get; private set; }
 
         public override string ToString()
         {
@@ -75,7 +75,7 @@ The email you are replying to text follow: " + Subject + Environment.NewLine +Bo
             Employee employeeB,
             IEnumerable<IPromptDescription> objectsToDiscuss,
             bool hasAttachment = false,
-            string? additionalPrompt = null)
+            string additionalPrompt = null)
         {
             string companyPrompt = (employeeA.Company.Name == employeeB.Company.Name) ? employeeA.Company.Prompt : employeeA.Company.Prompt + employeeB.Company.Prompt;
 
@@ -223,7 +223,7 @@ Internal emails could also include nicknames or briefly mention events outside o
             };
             commands["show"].AddCommand(showEmailCommand);
 
-            showEmailCommand.SetHandler(async (idOpt) =>
+            showEmailCommand.SetHandler((idOpt) =>
             {
                 var email = idOpt.Get<Email>();
                 Console.WriteLine(JsonConvert.SerializeObject(email, Formatting.Indented).Replace("\\r\\n", Environment.NewLine));

@@ -26,7 +26,7 @@ namespace Seahaven
             }
         }
 
-        public static async Task Handle(RootCommand rootCommand, string[]? cmdline = null)
+        public static async Task Handle(RootCommand rootCommand, string[] cmdline = null)
         {
             if (cmdline == null)
             {

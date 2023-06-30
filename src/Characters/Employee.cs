@@ -143,7 +143,7 @@ Salary should be a string in the format <AMOUNT> <ISO CURRENCY> example 84000 GB
             };
             commands["show"].AddCommand(showEmployeeCommand);
 
-            showEmployeeCommand.SetHandler(async (nameOpt, idOpt) =>
+            showEmployeeCommand.SetHandler((nameOpt, idOpt) =>
             {
                 List<Employee> results = new();
 

@@ -55,7 +55,9 @@ The JSON must have keys, FirstName, LastName, Age, Personality and NumberOfChild
             return person;
         }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public static async Task<Person> Create(string location)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             var allCountryInfo = CountryLoader.CountryInfo;
             // get a random country with a populations over 10m
