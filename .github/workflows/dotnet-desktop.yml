@@ -1,0 +1,64 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'true'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y%m%d_%H%M')"
+    - name: Build monolithic windows version
+      run: dotnet publish --self-contained true -p:Platform="Any CPU" -r win-x64 -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:Configuration=Release -p:IncludeAllContentForSelfExtract=true -p:PublishReadyToRunShowWarnings=true src/Seahaven.csproj
+    - name: Zip artifact for windows
+      run: zip --junk-paths seahaven-no-dotnet-runtime-windows.zip "./src/bin/Any CPU/Release/net6.0/win-x64/publish/" -r
+    - name: Build monolithic linux version
+      run: dotnet publish --self-contained true -p:Platform="Any CPU" -r linux-x64 -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:Configuration=Release -p:IncludeAllContentForSelfExtract=true -p:PublishReadyToRunShowWarnings=true src/Seahaven.csproj        
+    - name: Zip artifact for linux
+      run: zip --junk-paths seahaven-no-dotnet-runtime-linux.zip "./src/bin/Any CPU/Release/net6.0/linux-x64/publish/" -r   
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: release_${{ steps.date.outputs.date }}
+        release_name: Release ${{ github.ref_name }} - ${{ steps.date.outputs.date }}
+        draft: false
+        prerelease: false
+        body: Latest automatically built release
+    - name: Upload Release Asset
+      id: upload-release-asset-monolithic-windows
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./seahaven-no-dotnet-runtime-windows.zip
+        asset_name: seahaven-no-dotnet-runtime-windows.zip
+        asset_content_type: application/zip
+    - name: Upload Release Asset
+      id: upload-release-asset-monolithic-linux
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./seahaven-no-dotnet-runtime-linux.zip
+        asset_name: seahaven-no-dotnet-runtime-linux.zip
+        asset_content_type: application/zip
