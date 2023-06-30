@@ -177,7 +177,7 @@ Never mention you're a machine.
 
                 }
 
-                for (int x = 0; x < 1; x++)
+                for (int x = 0; x < multiply; x++)
                 {
                     List<IPromptDescription> objectsToReferToInTheEmail = new();
 
